@@ -1,5 +1,5 @@
 # auto-raspberry-pi
-Scripts to simplify setup of headless Raspberry Pi
+Scripts to simplify setup of headless Raspberry Pi. Similar idea to https://github.com/nmcclain/raspberian-firstboot?tab=readme-ov-file but does not require a new image build.
 
 * Assumes booting from a microSD
 * Tested using a Raspberry Pi 4B
@@ -19,19 +19,21 @@ Scripts to simplify setup of headless Raspberry Pi
 ## Before first-boot
 
 1. Edit file on bootfs / firstrun.sh
-1. Before the line `rm -f /boot/firstrun.sh` (near end) insert the necessary hooks
+1. Before the line `rm -f /boot/firstrun.sh` (near end) insert the necessary hook below
 
-## Hooks
+### Hook firstrun.sh
 
 ```shell
 # Insert before the rm -f /boot/firstrun.sh line in the firstrun.sh file
+# Note taht in firstrun.sh networking is not yet available
 
-apt update
-apt --assume-yes install  git ansible
-
-# The comma in the inventory list is necessary
-ansible-pull --url https://github.com/rbeede/auto-raspberry-pi.git --inventory `hostname`, SOME_PLAYBOOK_HERE.yml
 ```
+
+### Add /boot/first_boot_with_networking.sh
+
+This file will be executed after networking is available
+
+1. Copy any content you want (see repo example) to bootfs / first_boot_with_networking.sh
 
 ## Playbooks
 
