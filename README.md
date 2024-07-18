@@ -18,14 +18,13 @@ Scripts to simplify setup of headless Raspberry Pi. Similar idea to https://gith
 
 ## Before first-boot
 
-1. Copy the repository file firstboot.service to /boot (aka bootfs)
+1. Copy the repository file firstboot_with_networking.service to /boot (aka bootfs)
 1. Edit the file on the Raspberry Pi imaged disk: /boot/firstrun.sh (aka bootfs / firstrun.sh)
 1. Before the line `rm -f /boot/firstrun.sh` (near end) insert the necessary hook below
 
 ### Hook firstrun.sh
 
 ```shell
-# Insert before the rm -f /boot/firstrun.sh line in the firstrun.sh file
 # Note that in firstrun.sh networking is not yet available
 
 cp /boot/firstboot_with_networking.service /lib/systemd/system/
