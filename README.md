@@ -26,5 +26,13 @@ Scripts to simplify setup of headless Raspberry Pi
 ```shell
 # Insert before the rm -f /boot/firstrun.sh line in the firstrun.sh file
 
-rm -Rf /*
+apt update
+apt --assume-yes install  git ansible
+
+# The comma in the inventory list is necessary
+ansible-pull --url https://github.com/rbeede/auto-raspberry-pi.git --inventory `hostname`, SOME_PLAYBOOK_HERE.yml
 ```
+
+## Playbooks
+
+These can be found in the playbooks folder of the repository
