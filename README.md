@@ -20,8 +20,10 @@ You must apply a customized configuration otherwise the boot sequence will not u
 
 ## Before first-boot
 
-1. Copy the repository file firstboot_with_networking.service to /boot (aka bootfs)
-1. Edit the file on the Raspberry Pi imaged disk: /boot/firstrun.sh (aka bootfs / firstrun.sh)
+1. Copy the repository file firstboot_with_networking.service to bootfs
+   - From your imaging system this would just be the root of the microSD
+   - After the first boot this will become /boot/firmware on the running Raspberry Pi
+1. Edit the file on the Raspberry Pi imaged disk: firstrun.sh (aka bootfs / firstrun.sh)
 1. Before the line `rm -f /boot/firstrun.sh` (near end) insert the necessary hook below
 
 ⚠️A bug in Raspberry Pi Imager v1.8.5 and changes in Raspberry Pi OS breaks this process. https://github.com/raspberrypi/rpi-imager/issues/637
@@ -37,12 +39,12 @@ cp /boot/firmware/firstboot_with_networking.service /lib/systemd/system/
 cd /etc/systemd/system/multi-user.target.wants && ln -s /lib/systemd/system/firstboot_with_networking.service .
 ```
 
-### Add /boot/first_boot_with_networking.sh
+### Add first_boot_with_networking.sh to bootfs
 
 This file will be executed after networking is available
 
-1. Copy any content you want (see repo example) to /boot/firmware/first_boot_with_networking.sh
-1. Because /boot/firmware/ (aka bootfs) will be a FAT filesystem all the files will already have +x mode set for execution
+1. Copy any content you want (see repo example) to first_boot_with_networking.sh
+1. Because aka bootfs will be a FAT filesystem all the files will already have +x mode set for execution
 
 ## Playbooks
 
