@@ -11,6 +11,8 @@ Scripts to simplify setup of headless Raspberry Pi. Similar idea to https://gith
 
 ## Imaging
 
+You must apply a customized configuration otherwise the boot sequence will not use custom shell commands on first boot.
+
 1. If needed enable ssh
 1. Configure the keyboard
 1. Configure timezone
