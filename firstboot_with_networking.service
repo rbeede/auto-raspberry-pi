@@ -2,11 +2,11 @@
 Description=FirstBootWithNetworking
 After=network.target apt-daily.service apt-daily-upgrade.service
 Before=rc-local.service
-ConditionFileNotEmpty=/boot/first_boot_with_networking.sh
+ConditionFileNotEmpty=/boot/firmware/first_boot_with_networking.sh
 
 [Service]
-ExecStart=/boot/first_boot_with_networking.sh
-ExecStartPost=/bin/mv /boot/first_boot_with_networking.sh /boot/first_boot_with_networking.sh.done
+ExecStart=/boot/firmware/first_boot_with_networking.sh
+ExecStartPost=/bin/mv /boot/firmware/first_boot_with_networking.sh /boot/firmware/first_boot_with_networking.sh.done
 Type=oneshot
 RemainAfterExit=no
 
