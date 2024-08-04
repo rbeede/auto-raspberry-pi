@@ -25,7 +25,7 @@ You must apply a customized configuration otherwise the boot sequence will not u
 1. Before the line `rm -f /boot/firstrun.sh` (near end) insert the necessary hook below
 
 ⚠️A bug in Raspberry Pi Imager v1.8.5 and changes in Raspberry Pi OS breaks this process. https://github.com/raspberrypi/rpi-imager/issues/637
-- You may be able to fix it by changing /boot/firstrun.sh to use /boot/firmware/ instead of /boot
+- You may be able to fix it by changing /boot/ to use /boot/firmware/ everywhere instead
 - A future version of the imager is going to move to cloud-init which will simplify a lot of things
 
 ### Hook firstrun.sh
