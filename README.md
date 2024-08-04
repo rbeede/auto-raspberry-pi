@@ -33,7 +33,7 @@ You must apply a customized configuration otherwise the boot sequence will not u
 ```shell
 # Note that in firstrun.sh networking is not yet available
 
-cp /boot/firstboot_with_networking.service /lib/systemd/system/
+cp /boot/firmware/firstboot_with_networking.service /lib/systemd/system/
 cd /etc/systemd/system/multi-user.target.wants && ln -s /lib/systemd/system/firstboot_with_networking.service .
 ```
 
@@ -41,8 +41,8 @@ cd /etc/systemd/system/multi-user.target.wants && ln -s /lib/systemd/system/firs
 
 This file will be executed after networking is available
 
-1. Copy any content you want (see repo example) to /boot/first_boot_with_networking.sh
-1. Because /boot (aka bootfs) will be a FAT filesystem all the files will already have +x mode set for execution
+1. Copy any content you want (see repo example) to /boot/firmware/first_boot_with_networking.sh
+1. Because /boot/firmware/ (aka bootfs) will be a FAT filesystem all the files will already have +x mode set for execution
 
 ## Playbooks
 
