@@ -1,0 +1,9 @@
+- name: Gather the package facts
+  package_facts:
+    manager: auto
+
+# raspios-bookworm uses NetworkManager
+
+# Borrowing RFC 5737 ranges to avoid WAN conflicts on RFC 1918 and RFC 6890 and RFC 6598
+#   192.0.2.1/24
+

@@ -1,0 +1,23 @@
+---
+- hosts: all
+  become: yes
+
+
+  roles:
+    - wifi_ap
+    - tor_tunnel
+
+  tasks:
+    # Always do this VERY last otherwise system can go unstable during other Ansible tasks
+    - name: Update apt repo and cache
+      apt:
+        update_cache: yes
+        force_apt_get: yes
+        cache_valid_time: 3600
+    - name: Upgrade all packages
+      apt:
+        upgrade: dist
+        force_apt_get: yes
+    - name: Remove dependencies that are no longer required
+      apt:
+        autoremove: yes
